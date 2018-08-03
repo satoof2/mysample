@@ -1,0 +1,57 @@
+const path = require('path');
+const webpack = require('webpack');
+
+module.exports = {
+  entry: {
+          'bunnndle':'./src/index.ts',
+          'bundle2':'./src/index2.ts',
+          'kkkkk':'./src/kkk.js',
+          'aaasss':'./shopping-cart/app.js'
+        } ,
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
+    filename: '[name].js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        exclude: /node_modules/,
+        loader: 'vue-loader',
+        options: {
+          esModule: true
+        }
+      },
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          transpileOnly: true,
+          appendTsSuffixTo: [/\.vue$/]
+        }
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+    ]
+  },
+  resolve: {
+    extensions: ['*', '.ts', '.vue', '.json', 'scss', '.js'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  },
+  devServer: {
+    contentBase: './',
+    port: 3000,
+    host: 'localhost',
+    historyApiFallback: true,
+  },
+  externals: {
+    "aaaa":"aaaa"
+  }
+};
