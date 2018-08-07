@@ -3,10 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-          'bunnndle':'./src/index.ts',
-          'bundle2':'./src/index2.ts',
-          'kkkkk':'./src/kkk.js',
-          'aaasss':'./shopping-cart/app.js'
+          '111':'./src/main.js',
         } ,
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -17,7 +14,6 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        exclude: /node_modules/,
         loader: 'vue-loader',
         options: {
           esModule: true
@@ -37,6 +33,10 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loaders: 'url-loader'
+      }
     ]
   },
   resolve: {
